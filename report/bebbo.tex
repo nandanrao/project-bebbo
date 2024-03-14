@@ -1,0 +1,594 @@
+\documentclass{article}
+\usepackage[backend=biber, citestyle=authoryear, bibencoding=utf8]{biblatex}
+\addbibresource{./bibs/vlab-report.bib}
+\addbibresource{./bibs/unicef-ie.bib}
+\usepackage{adjustbox}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{lscape}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{amsmath}
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{dcolumn}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=10mm,
+ top=10mm
+ }
+
+\title{Bebbo}
+\date{February 2024}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\clearpage
+\section{Executive Summary}
+
+To support parents to receive timely and quality guidance even when direct contact with service  providers is not possible and overcome barriers in access to localized digital solutions with verified  content, UNICEF Europe and Central Asia Regional Office (ECARO) developed a mobile parenting app,  Bebbo. The mobile application also supports the most vulnerable parents/caregivers with lower  education level, in terms of the navigation modalities, off-line operability and selection of the core  content. The two main objectives of Bebbo, in line with the UNICEF ECARO Early Childhood  Development Theory of Change, are: (1) Improving availability of information for parents on child  development, and (2) Supporting parents for responsive caregiving and early intervention.  Accordingly, Bebbo app provides users information and interactive tools to help nurture and aid their  child’s health and development. The launch of Bebbo in 11 countries in the ECA region is a direct  response to the identified objective to engage parents and caregivers in nurturing care, positive  parenting, and stimulating learning.
+
+\subsection*{The Context}
+Parents everywhere are in need of information on various aspects of child development from reliable  and validated sources as well as guidance on how to support the health and development of their  children. However, services providing this sort of information and support are often non-existent or  inaccessible for a lot of parents in many places. Often, service providers, even when accessible, might  lack necessary knowledge and skills to respond to the questions and concerns parents might have.
+
+Mobile apps are one of the most convenient and easy ways to access information about child  development and parenting. However, parenting apps are mainly in English and provide a limited  thematic content without a possibility for parents to familiarize with, track, and support all aspects of  their child’s health and development. In addition, these apps are, naturally, not adapted to contexts of  individual countries. Many apps are not free of charge, which presents a significant barrier, particularly  for the most vulnerable families. At the same time, the majority of the existing apps operate only in  online mode requiring good internet connectivity that is lacking in remote and rural areas.
+
+\subsection*{The App}
+
+The Bebbo app is designed so that parents can begin using the app by creating a "profile" of their baby, entering basic information such as when the baby was born. After this, the parent is shown relevant content, asked to track milestones, and offered suggestions for content reading or games to play with their child.
+
+\subsection*{Impact Evaluation}
+
+We perform a study across two countries, Serbia and Bulgaria, using a randomized encouragement design to compare the impact of encouraging caregivers of young children to use the Bebbo app as compared to a treatment-as-usual (TAU) condition of encouraging them to use a static informational website. By comparing Bebbo to the existing TAU, we are asking the question: “does this new treatment offer something above and beyond the already existing treatments which parents might presumably already be asked to do?”
+
+We measure effects on eight outcomes across three domains: knowledge, attitudes, and practices. This study follows a randomized, difference-in-difference design, also known as a prepost design (\cite{Clifford2021}). Survey questions measuring the outcomes are asked at both the baseline (before treatment) and the endline (at least 4 weeks after treatment) surveys. Finally, an additional follow-up survey was sent (at least 4 weeks after the endline), to measure impacts of longer-term usage.
+
+\subsection*{Results}
+
+We do not find evidence that asking this population to use Bebbo has any impact beyond that of asking them to visit a static parenting website. Given the study design, however, we can make some additional inferences and policy recommendations:
+
+\begin{enumerate}
+\item The majority of the caregiving population in these countries is already very “good” in regards to the majority of the outcomes of interest. This implies that one may not need a ``swiss-army knife'' tool that is meant to work on all outcomes across all types of people. It might be more efficient to develop targeted interventions that target desired behaviors directly or target populations or communities directly.
+\item Awareness is in and of itself an effective intervention for some outcomes of interest, including knowledge of vaccine requirements. We see this because participants improved from the first questionnaire to the second questionnaire, regardless of treatment arm and regardless of compliance.
+\item Most people choose not to use Bebbo after downloading it. Those who do choose to use the app are neither more or less likely to be the people who need support. The app cannot, therefore, be expected to have a population-level impact unless it improves its engagement metrics. In our study, only 24\% of respondents who downloaded the app ended up using it beyond the first day, and only 5\% used it more than three days. When analyzing app data from Serbia and Bulgaria outside of the study population, we find similar and slightly worse engagement metrics. 70\% of Bebbo downloaders never fully complete their profile and 80\% never use the app after the first day.
+
+\end{enumerate}
+
+These three facts highlight that promoting Bebbo not only has no measurable impact on our study population, but we would also not expect it to have a large impact on the measured outcomes in the general population in these countries. In particular, this study indicates that raising awareness alone might be a more effective intervention. We recommend that the product team must improve the basic engagement, retention, and churn numbers if they expect the app to have a population-level impact on parenting outcomes.
+
+At the same time, while only about 5\% of app downloaders become regular users (use it more than 3 days in the first 30 days), that does still mean that there are over 2000 users in Serbia and Bulgaria who downloaded the app in 2023 and ended up using it at least four times. That usage alone indicates that they see some value. Unfortunately, our analysis does not reveal any trend that suggests those who download are either those who need or do not need the app according to our measures. We recommend relying on qualitative research about those users to understand the true value of the app among those who do choose to download it and end up using it regularly.
+
+
+\section{Evaluation Questions}
+
+\addcontentsline{toc}{subsection}{What question does this evaluation answer?}
+\subsection*{What question does this evaluation answer?}
+The design of the study is set up to answer the following question in the positive:
+
+\begin{displayquote}
+Is promoting Bebbo an effective policy to improve the parenting knowledge, attitudes, and practices of the general population of caregivers of young children in Bulgaria and Serbia?
+\end{displayquote}
+
+\noindent Note that the study cannot fully answer the question in the negative, it cannot prove that this intervention is ineffective, it can only fail to measure its effectiveness.
+
+We are only testing the effectivess of ``asking'' or ``inviting'' parents to use the app. Alternatively, one might be interested in testing the effectiveness ``incentivizing'' or ``forcing'' parents to use the app, but we are not doing that in this evaluation. We consider ``an effective policy'' one which performs better than the ``treatment as usual'' case, which we will consider to be an existing, static website (see Study Design for details). Finally, we are studying the general population of caregivers of young children. No particular care was given to single out any particular subset of the population that might benefit the most (or the least) from Bebbo, nor those who would be most likely to use Bebbo. Given the relatively low engagement seen with the app among study participants, it might be interesting to focus development of the app on the subset of caregivers who are most likely to need Bebbo, given that it has not been effective at engaging the general populaiton, and repeat a more focused study on that subset of the population.
+
+Alternatively, it might be useful to increase the engagement of the app among a general population of caregivers, before testing its impact again on a general population.
+
+
+\section{Study Design}
+
+\addcontentsline{toc}{subsection}{Experiment Design}
+\subsection*{Experiment Design}
+
+This study follows a prepost design (\cite{Clifford2021}) in which we measure the outcomes of interest before treatment (in a baseline survey) and after treatment (in an endline survey). We add an additional survey after the endline, referred to as a follow up, to look for longer-term impacts and test the impact of continued app usage.
+
+
+% \vspace{1cm}
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{images/design-timeline.png}
+\caption{Study Design}
+\label{fig:Study Design}
+\end{figure}
+
+\noindent Study participants are randomized, from the beginning, to one of two conditions:
+
+\begin{enumerate}
+\item \textbf{Treatment.} Participants in the treatment condition were told that there was one more step to qualify for the study and were then asked to download the app Bebbo and use it regularly, being encouraged that doing so will help them with their parenting.
+\item \textbf{Control.} Participants in the control condition were told that there was one more step to qualify for the study and were then asked to visit a parenting website and use it regularly, being encouraged that doing so will help them with their parenting.
+\end{enumerate}
+
+\noindent This follows a randomized encouragement design (\cite{Moayyedi2014}), as participants were asked to participate in the treatment, but it was not forced, thus leading to takeup that is less than 100\%. A randomized encouragement design is used here because:
+
+\begin{enumerate}
+\item We are interested in the impact of a treatment on a population where individuals can choose whether or not to take the treatment (the “compliers”).
+\item The compliers and non-compliers might have different reactions to the treatment.
+\end{enumerate}
+
+
+
+
+\addcontentsline{toc}{subsection}{Treatment Condition}
+\subsection*{Treatment Condition}
+
+Participants were sent the following message at the end of the baseline survey:
+
+\begin{quote}
+There is just one more step to qualify for the Visa gift card of X. Please download Bebbo, the free parenting app, and discover how it can help you. Using Bebbo regularly can improve your interactions with your children and help you support their development better! You can do so by clicking the link below:
+\end{quote}
+
+Clicking on the link led them to the Bebbo app page where they were invited to download the app via the app stores (Google or Apple). App usage in the treatment group was tracked via tracking ids sent with the link to the app download page, allowing us to follow the app usage of each individual treatment participant and measure takeup. If someone decided to ignore the page, and instead went on their own to search for and download Bebbo, we would not have data on their usage. Thus, usage data and takeup should be considered a lower bound.
+
+The Bebbo app is designed so that parents can begin using the app by creating a "profile" of their baby, entering basic information such as when the baby was born. After this, the parent is shown relevant content, asked to track milestones, and offered suggestions for content reading or games to play with their child.
+
+We collected all app usage events. For the sake of our study, we were interested in a subset of events that represented the accessing of content or features that contained information or might impact their behavior. A set of (6) events were determined to fit the bill, namely: advise\_details\_opened, game\_details\_opened, child\_milestone\_tracked, child\_measurement\_entered, child\_vaccine\_entered, child\_health\_checkup\_entered.
+
+
+\addcontentsline{toc}{subsection}{Control Condition}
+\subsection*{Control Condition}
+
+Participants were sent the following message at the end of the baseline survey:
+
+\begin{quote}
+
+There is just one more step to qualify for the Visa gift card of X. Please visit the following free parenting website and discover how it can help you. Using this website regularly  your interactions with your children and help you support their development better! You can do so by clicking the link below:
+\end{quote}
+
+The choice to use a website as a treatment-as-usual (TAU) condition was decided by the evaluation and program team because it represented an alternative (and traditional/existing) way to solve the problem that the Bebbo app was trying to solve. Another option that was considered was to use an alternate parenting app, but the team believed that using a website gave the best chance to detect a difference in the use of an app, rather than the specific implementation of the Bebbo app. Similarly, several websites were considered, and the most basic website (9meseca.bg) was chosen so as to be ``static'' (showing the same content to everyone rather than allowing user to create individualized profiles) so that it acted as an informational resource rather than a web app or platform which would similarly overlap with the concepts behind the Bebbo app.
+
+The downside with choosing a treatment-as-usual condition is that if one does not find significant effects of the treatment, one cannot differentiate between the following scenarios:
+
+\begin{enumerate}
+    \item The control is effective and the treatment equally effective.
+    \item Neither the control nor the treatment are effective.
+\end{enumerate}
+
+The assumption with this impact evaluation, from a policy perspective, is that the two are equally important. If the development and promotion of a new app does not improve parenting knowledge beyond what already exists in the market, then it is not an effective investment for public funds. That being said, there is some evidence in this study that allows us to differentiate between the two scenarios and determine that it is likely the latter. In particular, we conclude that neither control nor treatment condition make any significant impact on the general population above and beyond the priming effect of the baseline survey itself (to be discussed in depth in the section with results).
+
+\addcontentsline{toc}{subsection}{Recruitment}
+\subsection*{Recruitment}
+
+Participants were recruited to the study with social media ads on the Meta platform (Facebook and Instagram) using the Virtual Lab platform to create and run the recruitment ads. The Virtual Lab platform is used to track and measure the price-per-respondent across multiple strata, solving the core problem of monitoring, computing expectations, and adjusting budget when recruiting samples via social media platforms that are representative across desired and measured characteristics.
+
+An initial pilot study was run in Bulgaria to determine the cost effectiveness of the recruitment strategy, together with the incentive amount and mechanism. Results from the pilot indicated that it would not be possible to stratify according to the original plan and stay on budget. The decision was made to move forward with the overall plan, but drop the stratification, in order not to rethink too many parts of the study or fall behind schedule.
+
+One important takeaway and recommendation of this study is to pilot more extensively if the initial pilot shows poor results. When an initial pilot does not provide the desired results, the timeline should be adjusted to reflect that more time is needed to redesign the study and pilot again before launching. Due to time constraints, the study was launched with learnings from the pilot and budget constraints were again run into, limiting the ability to recruit as large of a sample as originally desired in each country. Similarly, attrition between baseline and endline, which was not piloted, was worse than expected. One possible explanation is that the incentive strategy and communication was not attractive enough to respondents, leading to both high recruitment costs, long recruitment time, and higher-than-hoped-for attrition.
+
+In exchange for participating in the study, participants were told they could receive gift cards worth up to 12 USD (in their local currency). These gift cards were delivered as \$4 visa international gift cards, which could be spent online but had to be spent for a purchase under \$4. See figure \ref{fig:Recruitment Ads} for examples of the ad material used for recruiting. Recruitment and survey administration was performed on a rolling basis between March and October, 2023. Each individual participant was treated at the end of the baseline survey and sent the endline survey 4 weeks after completing the baseline survey.
+
+The survey was administered via a chatbot in Facebook Messenger, using the Virtual Lab platform. Respondents who clicked on the advertisements were directed to a Messenger chat with the Virtual Lab Facebook page, which did not contain any content or information related to this study. Consent was provided via chat, as well as all answers to the survey questions and the treatment condition. Gift cards were also provided via chat, using the Tremendous gift card platform to provide Visa international prepaid cards. The Virtual Lab chatbot allowed the researchers to create multi-wave surveys, with independent timing. It additionally allowed the easy provision of gift cards at the end of each wave, which is integrated into the survey directly via the platform.
+
+% TODO: add recruitment stats
+
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{0.3\textwidth}
+\centering
+\includegraphics[width=100px]{images/recruitment/558.png}
+\end{subfigure}
+\begin{subfigure}{0.3\textwidth}
+\centering
+\includegraphics[width=100px]{images/recruitment/639.png}
+\end{subfigure}
+\begin{subfigure}{0.3\textwidth}
+\centering
+\includegraphics[width=100px]{images/recruitment/742.png}
+\end{subfigure}
+\caption{Recruitment Ads}
+\label{fig:Recruitment Ads}
+\end{figure}
+
+
+\section{Descriptives}
+
+
+\addcontentsline{toc}{subsection}{Respondent Characteristics by Country}
+\subsection*{Respondent Characteristics by Country}
+
+Table \ref{tbl:Baseline Respondent Characteristics} provides the baseline characteristics of the respondent population, separated by country. Note that these are also the control variables we will use in all regressions.
+
+Generally speaking, most respondents were themselves parents (not grandparents or other caregives), women, under 35 years of age, and spoke the dominant language of the country at home. A little over half had children 0-2, compared to 2-6 years of age. Respondents in Bulgaria were more likely to have a university education (42\%) compared to those in Serbia (29\%).
+
+\input{descriptives/tables/Baseline Respondent Characteristics}
+
+\addcontentsline{toc}{subsection}{Construct Variables}
+\subsection*{Construct Variables}
+
+The outcomes of interest consist of eight constructs divided into three domains: knowledge and awareness, confidence and attitudes, and practices. The mapping between the constructs, domains, and questions that make up the constructs are laid out in table \ref{tbl:Construct Variable Mapping}.
+
+The constructs ``Vaccine Knowledge'', ``Parenting Confidence'', and ``Breastfed'' are made up of only one question. The construct ``Activities Past 24h'' consists of a count of the number of activities, within the previous 24 hours, that the respondent has done. The construct ``Child Dev. Knowledge'' consists of a series of true/false questions, which are averaged based on whether or not the respondent answered correctly. The rest of the constructs are created by averaging of a set of likert variables.
+
+Descriptive statistics regarding the baseline responses for the outcomes are shown in table \ref{tbl:Outcome Construct Descriptives Pooled Baseline}. Note that many of the constructs have quite high means and medians and some have a high proportion of respondents with the max score. In particular, 73\% and 72\% of respondents scored perfectly on the knowledge questions. This is problematic, as knowledge is often considered the easiest to change quickly and was a core outcome of interest for the team. Additionally, knowledge questions seem to be heavily impacted by the repeated survey effect, as discussed further down.
+
+% Respondents skewed more towards desired responses since we observe large proportions of respondents with desired responses (coded 3 and 4) and very few with "incorrect" responses (coded 1). This pattern is stronger for some variables than others. Variables measuring Responsive Parenting PA have lesser consensus than those measuring Caregiver well-being or Parenting Knowledge. Variables $make\_fun\_of$ and $smile\_around\_child$ each have more than $60\%$ of respondents responding positively.
+
+% We observe ceiling effect for knowledge variables $past\_24h\_play$, $name\_colors$, $know\_name\_age$, $knows\_phys\_dev$ where over 90\% of respondents have marked the correct response. We observe NAs for variables that only some respondents view based on whether the question is applicable to them. Since 28 out of 33 variable have a mean of over 0.5, the responses skew towards being correct/desired response. The Child Development Knowledge variables with more uncertainty are $alphabet$, $say\_name\_age$ and $scribble$. Variables $breastfed$ and $decrease\_stress$ measuring whether the baby was breastfed within the last 24 hours and whether the parent has techniques to decrease stress levels, also have lower means.
+
+\input{descriptives/tables/Outcome Construct Descriptives Pooled Baseline}
+
+
+\addcontentsline{toc}{subsection}{Reliability Analysis}
+\subsection*{Reliability Analysis}
+
+The outcomes consist of ``constructs,'' some of which combine the answers to multiple questions into one value. The theory is that these questions are measuring the same underlying construct and that the reliability of the construct is increased by combining multiple answers.
+
+We test this assumption, that they are measuring the same underlying construct, by looking for internal consistency using Chronbach's alpha within the variables associated with each construct. Note that all constructs are composed of either Likert scale variables or Binary scale variables and not both. In all cases, each variable is attempting to measure a unidimensional construct on the same scale, implying that Chronbach's alpha is a reasonable measure (\cite{Tavakol2011}).
+
+This technique was used to finalize the construct/variable mapping after the data collection completed but before the analysis began, as some of the constructs had a lower internal consistency than hoped. Table \ref{tbl:Reliability: Pooled Alpha Matrix} summarizes raw and standardized alpha of each construct as used in the final analysis, along with the number of variables in it.
+
+Constructs with a reliability above 0.70 are considered internally consistent. After initial reliability analysis, the evaluation team iteratively dropped variables or modified constructs to ensure high reliability. In all cases, the variables that were dropped were clearly not measuring the same construct or measuring it on the same scale. The construct created from Activities in the Past 24 hours initially had the lowest reliability, possibly because some of the activities might be negatively correlated. Because of this, we decided to use the sum of the variables rather than the mean, removing any concern of internal consistency and rendering the low Chronbach's alpha irrelevant. This was not the original intention of the survey creators, however, it was decided that it was more intentional to measure the construct in this fashion and there was precendence in UNICEF work ([TODO: add reference]).
+
+\input{descriptives/tables/Reliability: Pooled Alpha Matrix}
+
+
+% \clearpage
+
+% \section*{Baseline Construct Distributions}
+
+% \includegraphics[width=\textwidth]{plots/Original Data - Knowledge and Awareness.png}
+% \includegraphics[width=\textwidth]{plots/Original Data - Practices.png}
+% \includegraphics[width=\textwidth]{plots/Original Data - Confidence and Attitudes.png}
+
+
+% \clearpage
+
+% \section*{Transformed Construct Distributions}
+% \includegraphics[width=\textwidth]{plots/Transformed Data.png}
+
+
+% \clearpage
+
+
+\addcontentsline{toc}{subsection}{Pre-Exposure to Bebbo}
+\subsection*{Pre-Exposure to Bebbo}
+
+This study recruited Serbian and Bulgarian caregivers online, via social media ads, and invited half of them to download the app Bebbo. What if some people were already familiar with the app? Or had already downloaded and used it before? This would not impact the internal validity of the study, however, it has implications for the external validity: what it is we are studying exactly.
+
+If someone had already downloaded the app and still had it on their phone, we would not be able to track their usage and they would be considered ``non-compliant'' in this design. This is desireable from an analysis perspective, as these people are ``always-takers'' (\cite{Imbens2015}) who would have the app regardless of whether they were assigned the treatment or control condition.
+
+To check for such ``pre-exposure,'' we ask control group users, at the end of the final follow up survey, if they have ever heard of Bebbo or used Bebbo.
+
+55\% of respondents said that they had heard about the app Bebbo and 23\% said that they had downloaded and used the app Bebbo. It's worth noting that there might be some social desireability bias or acquiesence bias (\cite{Stantcheva2023}) in these responses and we do not have a good way to detect that in this instance. However, despite those potential biases, this is strong suggestive evidence that there was pre-exposure to the treatment in our sample.
+
+
+
+\addcontentsline{toc}{subsection}{Power Analysis}
+\subsection*{Power Analysis}
+
+Ex-post analysis is provided to show the ability to detect an effect, in terms of standardized deviations (corresponding to Coen's D effect sizes), in the datasets analyzed. To create the effect size, the standardized different is multiplied by the empircal takeup of 28\%, which was the percentage of participants that had at least one learning event in the treatment group.
+
+The results show that the study is well powered (above 80\%) to detect a medium effect size (0.5 standard deviations) even when that effect is entirely limited to the 28\% takeup group at a significance level of 5\%. We also provide plots showing the power at 1.25\%, to show the equivalent of a 10\% significance level after controlling for multiple testing (8 outcomes) with a Bonferroni correction. See figure \ref{fig:Power Analysis}.
+
+Thus, the study is well-powered to determine whether or not the 28\% who used the app were impacted.
+
+
+\addcontentsline{toc}{subsection}{Attrition \& Survey Behavior}
+\subsection*{Attrition \& Survey Behavior}
+
+About 52\% of those who started the survey dropped off before completing it and 54\% never came back from the baseline to complete the endline. Table \ref{tbl:Attrition: Pooled} summarizes attrition by stage and treatment condition. It's worth noting that attrition was consistently higher among the treatment group, possibly related to the increased number of questions in the endline survey for that group (additional questions about app usage were added for the treated).
+
+Attrition was particularly high between endline and follow-up survey (66\%) but that includes not only participants who chose not to return for the follow-up, but also those that were disqualified due to an error in survey coding for a portion of early respondents: the questions asked to the control and treatment group was switched at endline, which informed the control group about the existence of the Bebbo app, potentially contaminating them as a pure control. While high pre-existing awareness was discovered in all groups, even those without this mixup, we have removed all cohorts who experienced the mixup from the follow-up survey analysis to avoid any potential issues.
+
+\input{descriptives/tables/Attrition: Pooled.tex}
+
+Note that respondents should have been contacted 4 weeks after each wave in order to take the subsequent wave. However, two factors may lead to them not always started the wave after exactly 4 weeks: (i) there were some technical issues which caused the notification to be delayed in some cases and (ii) not everyone begins the survey immediately when notified and maybe need to be reminded several times, or may remember on their own, significantly later.
+
+To improve consistency of the study, we removed anyone who took the endline or followup surveys more than 9 weeks after their previous survey, ensuring that all respondents were responding in a gap between 4-9 weeks. Table \ref{tbl:Time Gap Descriptives} summarizes the distribution of this time gap. As you can see, the vast majority (more than 80\%) took the survey after 4-5 weeks of the previous survey.
+
+\input{descriptives/tables/Time Gap Descriptives}
+
+\addcontentsline{toc}{subsection}{App Usage Characteristics}
+\subsection*{App Usage Characteristics}
+
+To measure takeup, we pick how many distinct days the participant used the app, as measured by one of the predefined set of ``learning events'' that include looking at material or entering milestones for their child. Note that in order to generate a ``learning event,'' one must get past the ``welcome'' screens and create a profile for their child.
+
+Figure \ref{fig:treatment-takeup-histogram} shows a histogram of the amount of days that respondents in the treatment group used the Bebbo app. Table \ref{tbl:Treatment Takeup} shows some takeup numbers for different intensities of usage. Very few treated respondents used the app more than three days (less than 3\%) and only about 12\% used it more than once. The maximum group of 8 people, less than 1\% of the population treated, used the app on more than 5 days in the 4-6 week period.
+
+Additionally, table \ref{tbl:App Engagement (30 days)} shows app engagement for those that did download the app, including data from app usage in Serbia and Bulgaria that was not associated with the study. Note that, of those who did download the app in the study (and therefore were complying with the reccomendations of the study) only about 55\% actually finished creating a profile for their child and only 24\% used the app past the first day and 5\% used it for more than 3 days.
+
+The numbers are worse for those outside of the study. Note that the engagement numbers in table \ref{tbl:App Engagement (30 days)} were restricted to 30 days after downloading, to compare with the timeframe between baseline and endline within the study. For additional context, we provide table \ref{tbl:App Retention Funnel (Non Study)} to show a full retention funnel for all users who downloaded in the first eight months of 2023 outside of our study.
+
+These numbers show that less than 30\% of downloaders actually complete a profile and access content. Of those, about half never come back to the app in the first 30 days and 30\% never come back to the app at all. These are important results. 20\% retention after the first day indicates that the app is not engaging or attractive to the majority of caregivers of young children who agree to download it. This is true both in our study population as well as for those who download the app in the wild.
+
+
+\begin{figure}[H]
+  \centering
+\includegraphics[width=\textwidth]{plots/Treatment Takeup Baseline - Endline.png}
+\caption{Days with Learning Event (Baseline - Endline)}
+\label{fig:treatment-takeup-histogram}
+\end{figure}
+
+
+\input{descriptives/tables/Treatment Takeup}
+
+\input{descriptives/tables/App Engagement (30 days)}
+
+\input{descriptives/tables/App Retention Funnel (Non Study)}
+
+
+\section{Results}
+
+\addcontentsline{toc}{subsection}{Regression Model}
+\subsection*{Regression Model}
+
+We run the following regression model to measure the intent-to-treat effect (ITT) of assignment to the treatment arm:
+$$
+y_{i} - y^{b}_i = \gamma_1 + \beta T_{i} + \gamma_2X_{i} + \epsilon_i
+$$
+
+Where $y_i$ represents the outcome of interest for individual $i$ measured after treatment, $T_i$ represents the random treatment assignment, $X_i$ a set of control variables and $y^b_i$ represents the outcome of interest measured before treatment. The parameter of interest will be the treatment effect, $\beta$.
+
+Note that due to the relatively large number of sepearate outcomes (8), we adjust p-values of the treatment variable to control the false discovery rate (FDR), using Benjamini-Hochberg, reported as the ``Adjusted Treatment p-value.''
+
+We also run the regression for two separate time periods: endline and follow-up. However, due to large attrition in the follow-up survey and the low long-term app takeup, the decision was made to rescope this evaluation to focus on the endline. Additional tables are available in the appendix.
+
+One of the dangers of a prepost design is that you are priming your respondents with the first survey and that priming may impact how they answer the questions in the post-treatment survey(s) (\cite{Stantcheva2023}). Given this particular study design, where our control is a ``treatment as usual'' (TAU) that involved sharing a website and we do not have data regarding the takeup, or usage, of the website, it is difficult to isolate a priming effect.
+
+We will also plot raw charts showing mean scores at baseline and endline for three groups for each variable: control, treatment with takeup (those who we know downloaded and used the app), treatment without takeup (those for whom we have no data showing they downloaded or used the app). These plots can provide suggestive evidence of priming effects by showing the shift in mean between baseline and endline across all three groups.
+
+Table \ref{tbl:Baseline Respondent Characteristics}, with the baseline respondent characteristics, shows all the control variables used. Note that several outcomes only applied to parents with children in a certain age group: "Breastfed" and "Vaccine Knowledge" applied to those with children ages 0-2. Thus, the binary control variable representing the age of the child (0-2 or 2-6) was removed in those regressions.
+
+\addcontentsline{toc}{subsection}{Knowledge and Awareness}
+\subsection*{Knowledge and Awareness}
+
+Regression analysis of these outcome constructs show no significant result of treatment:
+
+\input{regressions/Pooled: OLS - Endline - Knowledge and Awareness.tex}
+
+These two constructs, Vaccine Knowledge and Child Development Knowledge, both suffered from ceiling effects in the baseline survey (72\% and 73\% respectively). On top of those ceiling effets, they both potentially suffered from priming effects, as evidenced by the consistent improvement in the endline survey for all groups.
+
+Note that there is some evidence that those with less vaccine knowledge were more likely to download the app, indicating that takeup might be biased towards those who need it the most. This can be seen in the pre-post plots (figure \ref{fig:knowledge-pre-post}) but it can be more formally seen in the regressions in the section App Usage, where the regressions with parents of children 0-2 also show evidence that vaccine knowledge is a predicter of continued app usage, in the inverse (those with less knowledge to begin with are more likely to keep using the app).
+
+Unfortunately, we do not see this same impact on the subset of people even if we perform a subgroup analysis regression, which can be seen in the appendix in table \ref{tbl:Vaccine Failures Subgroup OLS - Endline}. This indicates that while the app is more likely to be used by that group of people, it would seem that the control subgroup also improved their vaccine knowledge significantly thus canceling out any impact from the app usage.
+
+
+\begin{figure}[H]
+  \centering
+\includegraphics[width=\textwidth]{plots/pre_post/Pooled: Vaccine Knowledge.png}
+\caption{Knowledge and Awareness}
+\label{fig:knowledge-pre-post}
+\end{figure}
+
+
+\addcontentsline{toc}{subsection}{Confidence and Attitudes}
+\subsection*{Confidence and Attitudes}
+
+Attitude Towards Physical punishment is a single question which asks if the parent believes the child needs to be physically punished. While there might seem to be some suggestive evidence from the coefficients of the regression model, the raw data shows that the positive coefficient is indicative of the fact that the control group got worse over time! They were more supportive of phyisical punishment in the endline survey. While there might be a story to that, it could also be the exact kind of statistical anomaly that multiple testing correction is designed to help us avoid when checking so many outcomes.
+
+Parenting Confidence shows no significant impact in the regression analysis. The raw data shows suggestive evidence that those with lower confidence might be more likely to take up the treatment. The lack of a positive coefficient in the regression, however, might indicate that those in the control group were equally likely to take up either the control website or seek out information on their own in order to improve by endline.
+
+\input{regressions/Pooled: OLS - Endline - Confidence and Attitudes.tex}
+\begin{figure}[H]
+  \centering
+\includegraphics[width=\textwidth]{plots/pre_post/Pooled: Parenting Confidence.png}
+\caption{Confidence and Attitudes}
+\label{fig:confidence-and-attitudes-pre-post}
+\end{figure}
+
+
+\addcontentsline{toc}{subsection}{Practices}
+\subsection*{Practices}
+
+These four constructs all relate to practices and behaviors of the parent. No significant effect was found for any of the behaviors and there is not much suggestive evidence of selective takeup either. The raw regression results suggest that Activities Past 24h show suggestive evidence of impact, but the raw data shows that the much of the improvement is driven by those in the treated group who did not takeup the treatment, which gives credence to the assumption that this could be statistical noise and is why we have corrected for multiple testing.
+
+\input{regressions/Pooled: OLS - Endline - Practices.tex}
+
+\begin{figure}[H]
+  \centering
+\includegraphics[width=0.9\textwidth]{plots/pre_post/Pooled: Breastfed.png}
+\includegraphics[width=0.9\textwidth]{plots/pre_post/Pooled: Positive Practices.png}
+\caption{Practices}
+\label{fig:practices-pre-post}
+\end{figure}
+
+\addcontentsline{toc}{subsection}{Policy Implications of the Results}
+\subsection*{Policy Implications of the Results}
+
+We do not find any significant effect of the use of Bebbo on any of the outcome constructs of interest.
+
+Three reasons, shown in the descriptive data as well as the raw pre-post data might explain why that is the case:
+\begin{enumerate}
+\item The presence of ceiling effects, where much of the population scored high in the baseline and could not improve in the endline.
+\item Priming effects led to participants improving from the first questionnaire to the second questionnaire, regardless of treatment arm and regardless of compliance.
+\item Low app usage. While takeup defined as ``had at least one learning event'' was 28\%, which would be enough to measure impacts, it's reasonable to believe that in order to have an impact on these outcomes, especially behaviors and attitudes, participants would need to use the app continuously. Especially if we consider the advantage of an app over a static website or informational fly, the advantage comes through continued usage (it is available on your home screen, can send you push notifications, etc.). Given that only 3\% used the app more than three days, we would not expect to see much of an impact of this app on the population.
+\end{enumerate}
+
+Ceiling effects might be a failure in the creation of the survey instrument. They could also be an example in the bias of the sample population (they are all better-than-average caregivers). But there could be a policy implication as well: it could indicate that most caregivers are quite good already at these outcomes, which is important to consider in the means of addressing the problem. In particular: it could indicate the importance of learning about and focusing effort on subgroups that are worse off. Towards that end, we will perform an analysis to determine the characteristics of the ``worse'' caregivers.
+
+Priming effects are a result of the study design, however, they indicate potential policy implications as well. In particular: if asking people questions (``Do you know which vaccine your child needs to take next'') has such a powerful effect on their knowledge, awareness campaigns might be enough to drive results on these outcomes. Knowledge about vaccines and knowledge about child development both seem like good candidates for such an intervention, given this study.
+
+Finally, low app usage implies that either (i) any app must go through extensive testing and improvement before it will be expected to make an impact measurable on a population level or (ii) apps might not be the most effective method of engaging parents. Like any intervention: the implementation matters and each app can be very different. One app failing to engage does not mean that all apps will fail to engage, however, it does leave the possibility open.
+
+
+
+\section{User Characteristics Correlated with App Usage}
+
+
+Given that so few caregivers used the app, it seems important to ask the question: ``who are the respondents who end up as app users?'' We do so by regressing respondents' app usage activity between baseline and endline against their characteristics at baseline. In particular, we will pick two binary outcomes: those who had at least one learning event, who we will say ``Used the App,'' those who had learning events on at least two days, or ``Used More Than 1 Day,'' and finally, those two used the app more than three days.
+
+The results can be found in table \ref{tbl: App Usage}. The regression is formulated as a simple linear regression for ease of interperability. The most notable predictor is whether or not the participant is themselves the parent of the child. The other notable epredictor is ``Activities Past 24h'' which is aligned with what we see in the raw data (under Results), it does seem that in our sample, those who reported doing fewer activities together with their child are more likely to download and use the app. One possible interpretation could be that there is a set of people who are not likely to spend time with their children but are likely to download and use apps. Unfortunately, we do not see a positive impact of this app on those people spending more time with their children, but potentially on a narrow subgroup there might be a positive impact that we do not detect. This could indicate that for ``screen parents'' that are not currently spending time with their children, an app is an effective way to get in front of them. The open question is whether or not it improves their behavior.
+
+There is some additional evidence that those with young children or more likely to use the app, along with those who have less knowledge of child development, speak the dominant language, and are university educated.
+
+\input{regressions/App Usage (All)}
+
+\input{regressions/App Usage (With Children 0-2)}
+
+\section{Conclusions and Reccomendations}
+
+By construction, mobile apps are meant to be used more than once. The promise of a mobile app is that users will continually engage with it. On average, Europeans spent more than two hours each day on apps (Statista - ``Average daily time spent by users in Europe on mobile apps from October 2020 to March 2021'').
+
+In order for the promotion of an app to be effective as a population-level intervention for parenting, it needs to be engaging enough that a large proportion of the target population will use it and continue to use it. By construction, this implies using it more than one day. Unfortunately, in our study population, 76\% of users who complied with the suggestion to download Bebbo abandoned it after the first day and never returned before the endline survey. This is inline with app usage data outside of our study, which shows that over 80\% of users abandon it after one day. Tracking app retention and engagement rates is important and can be done long before an app gets promoted to a broad population. It is not clear, a priori, what kind of app will engage caregivers, but that is a problem that should be solved before investing in promotion and scale, not after.
+
+We were not able to predict app usage accurately from baseline survey characteristics, although it does seem as though parents who are less likely to do activities with their kids are more likely to use a parenting app.
+
+We were not able to detect any statistically significant impact of promoting the app Bebbo on a general population of caregivers with children 0-6 years of age. Given the lack of engagement in the Bebbo app, this is not surprising. That being said, there were other factors that might have contributed to the lack of discovery of an impact that are in-and-of-themselves interesting. In particular:
+
+\begin{enumerate}
+\item There seemed to be a priming effect of the baseline survey, especially for questions related to knowledge, such as ``when is your child's next vaccination due.'' That implies that asking the question has an impact on caregivers and an awareness campaign might be a cheap and effective way of improving routine vaccination rates. People can find the information, they just need to be reminded to look.
+\item The majority of respondents scored either very good or perfectly on the baseline assessment. If the respondents were representative of the general population, this would imply that most caregivers in these countries are already knowledgeable and following many good practices. As opposed to a ``general parenting'' intervention, it might be best to focus interventions on particular practices which are still lagging (i.e. breastfeeding) or focus on particular groups or communities where all practices are lagging.
+\end{enumerate}
+
+Taken together, these results lead us to recommend that:
+
+\begin{enumerate}
+\item To understand the impact of the Bebbo app among the approximately 5\% of downloaders who end up as regularly users, we recommend relying on qualitative research with the existing users.
+\item In its current state, Bebbo cannot be expected to move the needle on a population and must become more engaging to a broader range of caregivers before it can be expected to have significant population-level impact.
+\item Awareness campaigns might have a significant impact on many of the outcomes of interest to this study and should be investigated further as potential policies that may be more effective at making a significant population-level impact.
+\end{enumerate}
+
+
+\printbibliography
+
+\appendix
+
+\numberwithin{table}{section}
+\numberwithin{figure}{section}
+
+
+\section{Baseline Balance}
+
+To test for balance between our randomly assigned treatment and control groups, we run an omnibus test, following Hansen and Bowers (2008), to observe standardized differences at baseline and the associated omnibus p-value. Results are reported separately for each country and found in tables \ref{tbl:Baseline Balance Serbia} and \ref{tbl:Baseline Balance Bulgaria}. Following \cite{Altman2014}, we do not change our analysis plan based on these results, but it is worth noting that the Bulgaria data does seem to suffer from slight unusual differences between treatment and control condition and the p-value of the omnibus test is significantly low. All the analysis is also reported for only those respondents in Serbia as well, which serves as a robustness check against any concerns that Bulgarians were randomizes into unlucky groups for our analysis.
+
+
+% \input{balance/Baseline Balance Pooled}
+\input{balance/Baseline Balance Serbia}
+\input{balance/Baseline Balance Bulgaria}
+
+\section{Additional Plots}
+
+\begin{figure}[H]
+\begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics[scale=0.33]{descriptives/plots/correlations_constructs_Serbia_Baseline.jpg}
+    \caption{Construct Correlations - Serbia}
+    \label{fig:serbia correlations}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+    \includegraphics[scale=0.33]{descriptives/plots/correlations_constructs_Bulgaria_Baseline.jpg}
+    \caption{Construct Correlations - Bulgaria}
+    \label{fig:bulgaria correlations}
+\end{minipage}%
+\end{figure}
+
+\begin{figure}[H]
+  \includegraphics[width=1.0\textwidth]{plots/Power Calculations.png}
+  \caption{Power Analysis at 28\% Takeup}
+  \label{fig:Power Analysis}
+\end{figure}
+
+\clearpage
+
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{plots/Adjusted Coefficient Plot Knowledge and Attitudes.png}
+\includegraphics[width=\textwidth]{plots/Adjusted Coefficient Plot Practices.png}
+\caption{Adjusted Coefficient Plots of 2SLS in Pooled Dataset}
+\end{figure}
+
+\section{Additional Tables}
+
+\input{descriptives/tables/Outcome Construct Descriptives Serbia Baseline}
+\input{descriptives/tables/Outcome Construct Descriptives Bulgaria Baseline}
+
+\input{descriptives/tables/Attrition: Serbia.tex}
+\input{descriptives/tables/Attrition: Bulgaria.tex}
+
+\section{Subgroup Regressions}
+
+While the study was not designed for subgroup analysis and thus they are very subject to false positives from multiple testing, it is instructive to run some subgroup regressions.
+
+In particular, we will run the regression on the subset that failed the vaccine knowledge question in the first wave (for children aged 0-2).
+
+\input{regressions/Vaccine Failures Subgroup OLS - Endline.tex}
+
+\section{ToT Regressions}
+
+Given that there is no significant impact measured in our evaluation regressions, we do not estimate the impact to be anything other than zero. That being said, the point estimates might still be suggestive evidence and one effective way to measure the point estimates of the impact is through an analysis of the treatment effect on the treated (ToT).
+
+We estimate this using an instrumental variable model given the monotonicity assumption of treatment (\cite{Imbens2015}), which assumes that people are not less likely to download and use the Bebbo app in the treatment group. To estimate our instrumental variable model, we use 2-stage least squares:
+\begin{align*}
+y_{i} - y^{b}_i &= \gamma_1 + \beta \hat{z}_{i} + \gamma_2X_{i} + \epsilon_i \\
+z_{i} &= \gamma_3 + \gamma_4 T_{i} + \gamma_5X_{i} + \delta_i
+\end{align*}
+
+Where $z_i$ is a binary indicator of takeup based on the recorded app-usage data and $\hat{z_i}$ the predicted takeup based on the first stage regression. Once again, parameter of interest is $\beta$.
+
+
+\input{regressions/Pooled: 2SLS - Endline - Knowledge and Awareness.tex}
+
+
+\input{regressions/Pooled: 2SLS - Endline - Confidence and Attitudes.tex}
+
+
+
+
+\input{regressions/Pooled: 2SLS - Endline - Practices.tex}
+
+
+
+\section{Country Regressions}
+
+For robustness checks, we run regressions on the individual countries.
+
+\input{regressions/Serbia: OLS - Endline - Practices.tex}
+\input{regressions/Serbia: OLS - Endline - Knowledge and Awareness.tex}
+\input{regressions/Serbia: OLS - Endline - Confidence and Attitudes.tex}
+
+\input{regressions/Bulgaria: OLS - Endline - Knowledge and Awareness.tex}
+\input{regressions/Bulgaria: OLS - Endline - Confidence and Attitudes.tex}
+\input{regressions/Bulgaria: OLS - Endline - Practices.tex}
+
+\input{regressions/Serbia: 2SLS - Endline - Knowledge and Awareness.tex}
+\input{regressions/Serbia: 2SLS - Endline - Confidence and Attitudes.tex}
+\input{regressions/Serbia: 2SLS - Endline - Practices.tex}
+
+\input{regressions/Bulgaria: 2SLS - Endline - Knowledge and Awareness.tex}
+\input{regressions/Bulgaria: 2SLS - Endline - Confidence and Attitudes.tex}
+\input{regressions/Bulgaria: 2SLS - Endline - Practices.tex}
+
+
+\section{Follow-up Regressions}
+
+As discussed in the text, due to low usage and high attrition, we restricted our primary analysis to the endline survey. That being said, we provide the regressions for the follow-up survey as well in this section.
+
+\input{regressions/Pooled for Follow Up: OLS - Follow Up - Knowledge and Awareness.tex}
+\input{regressions/Pooled for Follow Up: OLS - Follow Up - Confidence and Attitudes.tex}
+\input{regressions/Pooled for Follow Up: OLS - Follow Up - Practices.tex}
+
+\input{regressions/Pooled for Follow Up: 2SLS - Follow Up - Knowledge and Awareness.tex}
+\input{regressions/Pooled for Follow Up: 2SLS - Follow Up - Confidence and Attitudes.tex}
+\input{regressions/Pooled for Follow Up: 2SLS - Follow Up - Practices.tex}
+
+
+% \input{regressions/Serbia: OLS - Follow Up - Knowledge and Awareness.tex}
+% \input{regressions/Serbia: OLS - Follow Up - Confidence and Attitudes.tex}
+% \input{regressions/Serbia: OLS - Follow Up - Practices.tex}
+
+% \input{regressions/Serbia: 2SLS - Follow Up - Knowledge and Awareness.tex}
+% \input{regressions/Serbia: 2SLS - Follow Up - Confidence and Attitudes.tex}
+% \input{regressions/Serbia: 2SLS - Follow Up - Practices.tex}
+
+% \input{regressions/Bulgaria: OLS - Follow Up - Knowledge and Awareness.tex}
+% \input{regressions/Bulgaria: OLS - Follow Up - Confidence and Attitudes.tex}
+% \input{regressions/Bulgaria: OLS - Follow Up - Practices.tex}
+
+% \input{regressions/Bulgaria: 2SLS - Follow Up - Knowledge and Awareness.tex}
+% \input{regressions/Bulgaria: 2SLS - Follow Up - Confidence and Attitudes.tex}
+% \input{regressions/Bulgaria: 2SLS - Follow Up - Practices.tex}
+
+
+\section{Survey Instrument}
+
+\input{descriptives/tables/Construct Variable Mapping}
+
+\end{document}
