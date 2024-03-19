@@ -84,10 +84,6 @@ plot_pre_post <- function(dat, construct_cols, dataset) {
             geom_errorbar(aes(ymin = lower, ymax = upper)) +
             facet_grid(rows = . ~ outcome + takeup, scale = "free_y") +
             theme(
-                axis.title.x = element_blank(),
-                axis.title.y = element_blank(),
-                axis.text.x = element_blank(),
-                axis.text.y = element_blank(),
                 legend.position = "none"
             )
 

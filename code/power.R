@@ -84,7 +84,7 @@ difs <- make_outcome_difs(dat, construct_cols)
 
 sd_lookup <- difs %>%
     filter(wave == 1) %>%
-    select(construct_cols) %>%
+    select(all_of(construct_cols)) %>%
     summarise(across(all_of(construct_cols), ~ sd(.x, na.rm = T))) %>%
     pivot_longer(cols = construct_cols) %>%
     rename(sd = value)

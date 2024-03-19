@@ -86,3 +86,67 @@ b <- pooled_without_impacted %>%
 gap_metrics <- rbind(a, b) %>% mutate_if(is.difftime, round, 0)
 
 write_table(gap_metrics, "report/descriptives/tables", "Time Gap Descriptives")
+
+
+############################################
+# Attrition Regression
+############################################
+
+attrition_regression <- function(dat, covariates, outcome) {
+    fmla <- reformulate(covariates, outcome)
+    res <- lm(fmla, data = dat)
+    res
+}
+
+outcomes <- list(
+    `Endline Retention` = "made_it_to_endline",
+    `Follow Up Retention` = "made_it_to_followup"
+)
+
+made_endline <- pooled %>%
+    filter(wave == 1) %>%
+    distinct(userid) %>%
+    pull(userid)
+
+made_followup <- pooled %>%
+    filter(wave == 2) %>%
+    distinct(userid) %>%
+    pull(userid)
+
+
+dat <- pooled %>%
+    mutate(made_it_to_endline = userid %in% made_endline) %>%
+    mutate(made_it_to_followup = userid %in% made_followup) %>%
+    filter(wave == 0)
+
+datasets <- list(
+    `All` = dat,
+    `With Children 0-2` = dat %>% filter(age_flag == "0-2")
+)
+
+for (dataset in names(datasets)) {
+    d <- datasets[[dataset]]
+
+    covariates <- c(control_cols, construct_cols)
+
+    if (dataset == "All") {
+        covariates <- covariates[!(covariates %in% c("was_breastfed", "health_knw"))]
+    }
+
+    if (dataset == "With Children 0-2") {
+        covariates <- covariates[!(covariates %in% c("age_flag"))]
+    }
+
+    res <- list()
+
+    for (outcome in names(outcomes)) {
+        var <- outcomes[[outcome]]
+        res[[outcome]] <- attrition_regression(d, covariates, var)
+    }
+
+    covariate_labels <- sapply(covariates, function(n) pretty_vars[[n]])
+
+    dep_vars <- names(outcomes)
+
+    write_regressions(res, "report/regressions/", glue("Attrition Prediction ({dataset})"), dep.var.labels = dep_vars, covariate.labels = covariate_labels, single.row = TRUE, align = TRUE, table.placement = "H")
+}

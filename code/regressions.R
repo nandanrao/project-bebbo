@@ -134,7 +134,6 @@ for (wave in names(waves)) {
         fun <- models[[model]]
 
         for (dataset in names(datasets)) {
-            #
             if (all(dataset == "Bulgaria" & wave == "Follow Up")) {
                 next
             }
@@ -151,6 +150,8 @@ for (wave in names(waves)) {
                     return(lapply(outcomes, function(o) fun(dat, o, endline_flag, "country")))
                 }
             })
+
+
 
             var_of_interest <- if_else(model == "2SLS", "has_learning_eventTRUE", "treatmenttreated")
 
@@ -183,7 +184,7 @@ for (wave in names(waves)) {
                     adjusted_coefficients <- rbind(adjusted_coefficients, l)
                 }
 
-                controls <- pick_controls(dat, outcome)
+                controls <- control_cols
 
                 covariate_labels <- c(pretty_vars[[var_of_interest]])
                 dep_vars <- as.character(sapply(domains[[name]], function(n) pretty_vars[[n]]))
@@ -275,5 +276,59 @@ write_regressions(
 
 
 ###############################################
-# ADD MOTHERS/FATHERS/OTHER
+# YOUNG CHILD SUBGROUP
 ###############################################
+
+run_age_flag_regression <- function(dat, outcome, endline_flag, ...) {
+    controls <- control_cols[!(control_cols %in% c("age_flag"))]
+    fmla <- reformulate(c("treatment", controls, ...), outcome)
+    dat <- format_for_reg(dat, outcome, endline_flag)
+    model <- lm(fmla, dat, na.action = na.omit)
+    model
+}
+
+dataset <- "Only Children 0-2"
+model <- "OLS"
+wave <- "Endline"
+dat <- pooled %>% filter(age_flag == "0-2")
+dat <- make_outcome_difs(dat, construct_cols)
+
+endline_flag <- waves[[wave]]
+fun <- run_age_flag_regression
+
+res <- lapply(domains, function(outcomes) {
+    return(lapply(outcomes, function(o) fun(dat, o, endline_flag, "country")))
+})
+
+var_of_interest <- "treatmenttreated"
+
+p_values <- lapply(res, function(x) lapply(x, function(y) get_p_value(y, var_of_interest)))
+
+for (name in names(res)) {
+    results <- res[[name]]
+
+    local_p_values <- lapply(results, function(model) fix_p_values(p_values, model, var_of_interest))
+
+    local_treatment_p_values <- sapply(local_p_values, function(x) format(x[var_of_interest], digits = 3))
+
+    lines <- list(
+        c("Adjusted Treatment p-value", local_treatment_p_values)
+    )
+
+    controls <- control_cols
+    covariate_labels <- c(pretty_vars[[var_of_interest]])
+    dep_vars <- as.character(sapply(domains[[name]], function(n) pretty_vars[[n]]))
+
+    write_regressions(
+        results,
+        "report/regressions",
+        glue("{dataset}: {model} - {wave} - {name}"),
+        add.lines = lines,
+        dep.var.labels = dep_vars,
+        covariate.labels = covariate_labels,
+        p = local_p_values,
+        star.cutoffs = c(0.10, 0.05, 0.01),
+        omit = c(controls, "Constant", "countrySerbia"),
+        keep.stat = c("n", "rsq")
+    )
+}
