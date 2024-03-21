@@ -23,8 +23,7 @@ make_outcome_difs <- function(dat, outcomes) {
 }
 
 
-power_per_size <- function(n, d, sig) {
-    takeup <- 0.28
+power_per_size <- function(n, d, sig, takeup) {
     res <- pwr.t.test(n = n, d = d * takeup, sig.level = sig)
     res$power
 }
@@ -38,6 +37,13 @@ get_n <- function(dat) {
         min()
 }
 
+get_takeup <- function(dat) {
+    dat %>%
+        filter(wave == 1) %>%
+        filter(treatment == "treated") %>%
+        summarise(takeup = mean(has_learning_event)) %>%
+        pull(takeup)
+}
 
 datasets <- list(
     `Serbia` = serbia,
@@ -45,15 +51,17 @@ datasets <- list(
     `Pooled` = pooled
 )
 
+
 df <- tibble()
 
 for (dataset in names(datasets)) {
     dat <- datasets[[dataset]]
     n <- get_n(dat)
+    takeup <- get_takeup(dat)
 
     for (z in c(0.10 / 8, 0.05)) {
         x <- seq(0, .8, 0.025)
-        y <- sapply(x, function(d) power_per_size(n, d, z))
+        y <- sapply(x, function(d) power_per_size(n, d, z, takeup))
         d <- tibble(x, y)
         d <- mutate(d, z = z, Dataset = dataset)
         df <- rbind(df, d)
@@ -69,7 +77,10 @@ ggplot(df, aes(x = `Effect Size`, y = Power, color = Dataset)) +
     geom_line() +
     facet_grid(cols = vars(Significance))
 
-ggsave("report/plots/Power Calculations.png", width = 10, height = 10)
+ggsave(glue("report/plots/Power Calculations.png"), width = 10, height = 6)
+
+
+
 
 
 
@@ -138,4 +149,4 @@ ggplot(d, aes(x = normalized_value, y = after_stat(density), color = treatment))
     geom_vline(aes(xintercept = mean, color = treatment)) +
     facet_wrap(vars(name), nrow = 4, ncol = 2)
 
-ggsave(glue("report/plots/Transformed Data.png"), width = 10, height = 10)
+ggsave(glue("report/plots/Transformed Data.png"), width = 10, height = 6)

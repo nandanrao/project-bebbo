@@ -356,7 +356,8 @@ pretty_vars <- list(
     age_flag = "Child Age",
     children_count = "Num. Children",
     parent_age_flag = "Parent Age",
-    urban = "Urban Area"
+    urban = "Urban Area",
+    treatment = "Treatment"
 )
 
 # pooled -> 7348 > 8194

@@ -127,7 +127,7 @@ datasets <- list(
 for (dataset in names(datasets)) {
     d <- datasets[[dataset]]
 
-    covariates <- c(control_cols, construct_cols)
+    covariates <- c(control_cols, construct_cols, "treatment")
 
     if (dataset == "All") {
         covariates <- covariates[!(covariates %in% c("was_breastfed", "health_knw"))]

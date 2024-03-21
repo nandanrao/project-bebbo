@@ -166,7 +166,7 @@ dat <- pooled %>%
     replace_na(list(has_learning_event = FALSE, more_than_one_day_learned = FALSE, more_than_three_days_learned = FALSE))
 
 
-datasets = list(
+datasets <- list(
     `All` = dat,
     `With Children 0-2` = dat %>% filter(age_flag == "0-2")
 )
@@ -227,10 +227,10 @@ user_retention_funnel <- function(dat) {
         mutate(
             has_downloaded = has_downloaded,
             learned_perc = glue("{round(learned / has_downloaded, 3) * 100}%"),
-            after_1_perc = glue("{round(after_1 / learned, 3) * 100}%"),
-            after_30_perc = glue("{round(after_30 / after_1, 3) * 100}%"),
-            after_60_perc = glue("{round(after_60 / after_30, 3) * 100}%"),
-            after_90_perc = glue("{round(after_90 / after_60, 3) * 100}%"),
+            after_1_perc = glue("{round(after_1 / has_downloaded, 3) * 100}%"),
+            after_30_perc = glue("{round(after_30 / has_downloaded, 3) * 100}%"),
+            after_60_perc = glue("{round(after_60 / has_downloaded, 3) * 100}%"),
+            after_90_perc = glue("{round(after_90 / has_downloaded, 3) * 100}%"),
         ) %>%
         rename(
             `Downloaded` = has_downloaded,

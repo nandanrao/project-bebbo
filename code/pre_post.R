@@ -34,8 +34,8 @@ plot_pre_post <- function(dat, construct_cols, dataset) {
         mutate(
             takeup = case_when(
                 treatment == "control" ~ "control",
-                treatment == "treated" & has_learning_event == FALSE ~ "treated-no-takeup",
-                treatment == "treated" & has_learning_event == TRUE ~ "treated-takeup"
+                treatment == "treated" & days_learned > 3 ~ "treated-high-takeup",
+                TRUE ~ "treated-low-takeup"
             )
         ) %>%
         select(userid, takeup)
@@ -83,11 +83,14 @@ plot_pre_post <- function(dat, construct_cols, dataset) {
             geom_point() +
             geom_errorbar(aes(ymin = lower, ymax = upper)) +
             facet_grid(rows = . ~ outcome + takeup, scale = "free_y") +
+            ylab("Mean Outcome") +
+            xlab("Survey Wave") +
             theme(
-                legend.position = "none"
+                legend.position = "none",
+                axis.text.x = element_blank()
             )
 
-        ggsave(glue("report/plots/pre_post/{dataset}: {outcomes_}.png"), width = 10, height = 5)
+        ggsave(glue("report/plots/pre_post/{dataset}: {outcomes_}.png"), width = 10, height = 4)
     }
 }
 
