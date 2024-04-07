@@ -81,18 +81,13 @@ create_funnel <- function(dat, dataset) {
         select(-has_learned, -learned_more_than_one_day, -learned_more_than_three_days)
 }
 
-non_study <- all_app %>%
-    filter(event_timestamp < ymd(20230901)) %>%
-    filter(event_name == "first_open") %>%
-    mutate(first_open = date(event_timestamp)) %>%
-    select(userid, first_open) %>%
-    inner_join(all_app)
 
-window <- non_study %>%
+window <- all_app %>%
+    mutate(first_open = date(first_event_time)) %>%
     mutate(days_after = event_day - first_open) %>%
     filter(days_after < 30)
 
-non_study <- non_study %>%
+non_study <- all_app %>%
     distinct(userid) %>%
     left_join(rollup_events(window, c())) %>%
     mutate(has_any_bebbo_event = TRUE) %>%
@@ -133,10 +128,8 @@ pooled %>%
     ggplot(aes(x = days_learned)) +
     stat_bin(binwidth = 1, fill = "steelblue") +
     stat_bin(binwidth = 1, geom = "text", aes(label = ..count..), vjust = -0.5) +
-    theme(
-        axis.title.y = element_blank(),
-        axis.title.x = element_blank()
-    )
+    ylab("Number of users") +
+    xlab("Number of days with a learning event")
 
 ggsave(glue("report/plots/Treatment Takeup Baseline - Endline.png"), width = 10, height = 5)
 
@@ -199,58 +192,26 @@ for (dataset in names(datasets)) {
 }
 
 
-
-
 ####################################
 # 30/60/90 day retention
 ####################################
 
+funnel <- read_csv("data/raw/bq-results-retention-funnel-2024-04.csv") %>%
+    mutate(
+        `Downloaded` = opened_app,
+        `Used (%)` = glue("{round(had_learning_event / opened_app, 3) * 100}%"),
+        `After 1 day (%)` = glue("{round(retention_over_1_day / opened_app, 3) * 100}%"),
+        `After 30 days (%)` = glue("{round(retention_30_days / opened_app, 3) * 100}%"),
+        `After 60 days (%)` = glue("{round(retention_60_days / opened_app, 3) * 100}%"),
+        `After 90 days (%)` = glue("{round(retention_90_days / opened_app, 3) * 100}%"),
+    ) %>%
+    select(
+        -retention_90_days,
+        -retention_60_days,
+        -retention_30_days,
+        -retention_over_1_day,
+        -had_learning_event,
+        -opened_app
+    )
 
-user_retention_funnel <- function(dat) {
-    has_downloaded <- window %>%
-        distinct(userid) %>%
-        count() %>%
-        pull(n)
-
-    dat %>%
-        filter(event_name %in% learning_events) %>%
-        group_by(userid) %>%
-        summarise(
-            learned = TRUE,
-            after_1 = (sum(days_after > 1)) > 0,
-            after_30 = (sum(days_after > 30)) > 0,
-            after_60 = (sum(days_after > 60)) > 0,
-            after_90 = (sum(days_after > 90)) > 0
-        ) %>%
-        select(-userid) %>%
-        summarise_all(sum) %>%
-        mutate(
-            has_downloaded = has_downloaded,
-            learned_perc = glue("{round(learned / has_downloaded, 3) * 100}%"),
-            after_1_perc = glue("{round(after_1 / has_downloaded, 3) * 100}%"),
-            after_30_perc = glue("{round(after_30 / has_downloaded, 3) * 100}%"),
-            after_60_perc = glue("{round(after_60 / has_downloaded, 3) * 100}%"),
-            after_90_perc = glue("{round(after_90 / has_downloaded, 3) * 100}%"),
-        ) %>%
-        rename(
-            `Downloaded` = has_downloaded,
-            `Used (%)` = learned_perc,
-            `After 1 day (%)` = after_1_perc,
-            `After 30 days (%)` = after_30_perc,
-            `After 60 days (%)` = after_60_perc,
-            `After 90 days (%)` = after_90_perc,
-        ) %>%
-        select(-learned, -after_1, -after_30, -after_60, -after_90)
-}
-
-non_study <- all_app %>%
-    filter(event_name == "first_open") %>%
-    filter(event_timestamp < ymd(20230901)) %>%
-    mutate(first_open = date(event_timestamp)) %>%
-    select(userid, first_open) %>%
-    inner_join(all_app) %>%
-    mutate(days_after = event_day - first_open)
-
-out <- user_retention_funnel(non_study)
-
-write_table(out, "report/descriptives/tables", "App Retention Funnel (Non Study)", table.placement = "H")
+write_table(funnel, "report/descriptives/tables", "App Retention Funnel (Non Study)", table.placement = "H")
