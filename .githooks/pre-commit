@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Enable once per clone: git config core.hooksPath .githooks
+# Needs gitleaks (pacman -S gitleaks) and nbstripout (uv tool install nbstripout).
+set -euo pipefail
+cd "$(git rev-parse --show-toplevel)"
+
+for tool in gitleaks nbstripout python3; do
+  command -v "$tool" >/dev/null || { echo "pre-commit: $tool is not installed" >&2; exit 1; }
+done
+
+gitleaks git --pre-commit --staged --redact --no-banner --log-level warn
+
+python3 .githooks/pii_scan.py
+
+# Checks the staged copy of each notebook, not the working file.
+tmp=$(mktemp -d)
+trap 'rm -rf "$tmp"' EXIT
+git diff --cached --name-only --diff-filter=ACMR -z -- '*.ipynb' |
+  while IFS= read -r -d '' nb; do
+    git show ":$nb" > "$tmp/nb.ipynb"
+    if ! nbstripout --verify "$tmp/nb.ipynb" >/dev/null; then
+      echo "pre-commit: $nb has outputs; run: nbstripout '$nb' && git add '$nb'" >&2
+      exit 1
+    fi
+  done

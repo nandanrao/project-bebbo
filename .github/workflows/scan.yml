@@ -1,0 +1,21 @@
+# Backstop for the pre-commit hook, which a clone may not have enabled. It can
+# only report a leak after the push, so treat a failure as an incident: rewrite
+# history and rotate any exposed secret.
+name: scan
+on: [push, pull_request]
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: gitleaks
+        env:
+          VERSION: 8.30.1
+        run: |
+          curl -sSL "https://github.com/gitleaks/gitleaks/releases/download/v${VERSION}/gitleaks_${VERSION}_linux_x64.tar.gz" | tar xz gitleaks
+          ./gitleaks git --redact --no-banner .
+      - name: respondent data
+        run: python3 .githooks/pii_scan.py --all
