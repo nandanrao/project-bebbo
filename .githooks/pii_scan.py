@@ -3,7 +3,7 @@
 
 Our repos are pushed to GitHub, which is outside our protected Google
 Workspace, so respondent data must never be committed; see
-projects/version-control-plan.md in the team Drive.
+projects/README.md and projects/repo-template/README.md in the team Drive.
 
     pii_scan.py             staged changes (the pre-commit hook)
     pii_scan.py --all       every file git tracks or would add (new repos, CI)
@@ -15,12 +15,14 @@ Flags:
 - 15-17 digit numbers: Messenger PSIDs and Fly userids have this shape;
 - email addresses outside our and our clients' domains.
 
-A line containing `pii-ok` is skipped. Use it for test numbers and for Meta
-page, ad account and ad IDs, which have the same shape as a PSID.
+A line containing `pii-ok` is skipped: a test number, or a one-off Meta
+page, ad account or ad ID (same shape as a PSID).
 
-.githooks/pii-allow lists path globs, one per line, of data files someone has
-checked hold no respondent-level rows, such as aggregate results tables. Their
-lines are still scanned.
+.githooks/pii-allow, one entry per line:
+- a path glob: a data file someone has checked holds no respondent-level rows,
+  such as an aggregate results table. Its lines are still scanned.
+- a bare number: an ID known not to be a respondent's, such as a Meta page,
+  business or ad account ID, allowed wherever it appears.
 """
 import fnmatch
 import re
@@ -46,7 +48,7 @@ PATTERNS = {
     ),
     "Kenyan phone number": re.compile(r"(?<![\w.])0[17]\d{8}(?![\d.])"),
     "PSID/userid-shaped number": re.compile(r"(?<![\w.])\d{15,17}(?![\d.])"),
-    "email address": re.compile(r"[\w.+-]+@([\w-]+(?:\.[\w-]+)+)"),
+    "email address": re.compile(r"[\w.+-]+@((?:[\w-]+\.)+[A-Za-z]{2,})\b"),
 }
 OK_EMAIL_DOMAINS = (
     "vlab.digital", "worldbank.org", "unicef.org", "girleffect.org",
@@ -65,11 +67,15 @@ def git(*args):
 
 
 def load_allowed():
+    """Return (path globs, allowed numbers) from ALLOW_FILE."""
     try:
         with open(ALLOW_FILE) as f:
-            return [l.strip() for l in f if l.strip() and not l.startswith("#")]
+            entries = [l.split("#")[0].strip() for l in f]
     except FileNotFoundError:
-        return []
+        return [], set()
+    entries = [e for e in entries if e]
+    numbers = {e for e in entries if e.isdigit()}
+    return [e for e in entries if e not in numbers], numbers
 
 
 def is_data_path(path):
@@ -82,7 +88,7 @@ def email_ok(domain):
     return any(domain == d or domain.endswith("." + d) for d in OK_EMAIL_DOMAINS)
 
 
-def scan_line(line):
+def scan_line(line, allowed_numbers=frozenset()):
     if SKIP_MARKER in line:
         return []
     hits = []
@@ -91,6 +97,8 @@ def scan_line(line):
             if label == "email address" and email_ok(m.group(1)):
                 continue
             if ISO_DATE.match(m.group(0)):
+                continue
+            if re.sub(r"\D", "", m.group(0)) in allowed_numbers:
                 continue
             hits.append((label, m.group(0)))
     return hits
@@ -136,10 +144,10 @@ def main():
         lines = staged_lines()
     paths = [p for p in paths if p]
 
-    allowed = load_allowed()
+    globs, numbers = load_allowed()
 
     def reviewed(path):
-        return any(fnmatch.fnmatch(path, g) for g in allowed)
+        return any(fnmatch.fnmatch(path, g) for g in globs)
 
     problems = [f"{p}: data file" for p in paths
                 if is_data_path(p) and not reviewed(p)]
@@ -148,7 +156,7 @@ def main():
             continue
         if is_data_path(path) and not reviewed(path):
             continue
-        for label, value in scan_line(text):
+        for label, value in scan_line(text, numbers):
             problems.append(f"{path}:{lineno}: {label} {mask(value)}")
 
     if problems:
